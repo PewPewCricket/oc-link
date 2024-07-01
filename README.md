@@ -1,5 +1,5 @@
 # OC-link
-an rc service for OpenOS to create persistant symlinks
+An RC service for OpenOS to create persistant symlinks
 
 # Usage
 All paths are absolute paths including: link names, files to link to, and paths to links <br>
