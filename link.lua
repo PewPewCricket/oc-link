@@ -42,7 +42,7 @@ end
 
 function remove(link)
   if not fs.exists(link) then
-    io.stderr:write("target fiile not found: " .. link)
+    io.stderr:write("target file not found: " .. link)
     return false
   end
   fs.remove(link)
