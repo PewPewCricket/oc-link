@@ -1,9 +1,8 @@
 local fs = require("filesystem")
-local link = require("link")
-local ftable = require("tools/ftable")
+local futils = require("tools/futils")
 
 function start()
-  local fileData = ftable.fileToTable("/etc/link.d/links.list")
+  local fileData = futils.fileToTable("/etc/ld.lst")
   local seperator = " > "
   local index = 0
   for j, v in pairs(fileData) do
