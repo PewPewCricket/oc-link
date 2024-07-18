@@ -4,7 +4,14 @@ local futils = require("tools/futils")
 local fs = require("filesystem")
 local args, ops = shell.parse(...)
 
-if ops.r then     --Remove a symlink
+local args = shell.parse(...)
+if #args == 0 then
+  io.write("Usage: ln <target> [<name>]\n")
+  return 1
+end
+
+-- remove a symlink
+if ops.r then
   if args[1] == nil then
     shell.execute("man ln")
   elseif futils.findData(shell.resolve(args[1]), futils.fileToTable("/etc/link.lst")) ~= nil then
@@ -16,7 +23,8 @@ if ops.r then     --Remove a symlink
   else
     io.stderr:write(string.format("link not found: %s", shell.resolve(args[1])))
   end
-else              --Create a permanant symlink
+-- create a symlink
+else
   if args[1] == nil or args[2] == nil then
     shell.execute("man ln")
   elseif fs.exists(shell.resolve(args[2])) then
