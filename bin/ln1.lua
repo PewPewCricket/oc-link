@@ -12,7 +12,13 @@ end
 
 local target_name = args[1]
 local target = shell.resolve(target_name)
-local link = nil
+
+local linkpath
+if #args > 1 then
+  linkpath = shell.resolve(args[2])
+else
+  linkpath = fs.concat(shell.getWorkingDirectory(), fs.name(target))
+end
 
 -- remove a symlink
 if ops.r then
@@ -27,13 +33,11 @@ if ops.r then
   end
 -- create a symlink
 else
-  if #args == 1 then
-    link = --
-  if fs.exists(link) then
-    io.stderr:write(string.format("file already exists: %s", link))
+  if fs.exists(linkpath) then
+    io.stderr:write(string.format("file already exists: %s", linkpath))
   elseif fs.exists(target) then
-    link.create(target, link)
-    print(string.format("added link to list: %s > %s", link), target))
+    link.create(target, linkpath)
+    print(string.format("added link to list: %s > %s", linkpath), target))
   else
     io.stderr:write(string.format("can't link to file: %s", target))
   end
