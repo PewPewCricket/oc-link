@@ -14,12 +14,7 @@ function lib.remove(link)
   return true
 end
 
-function lib.createTemp(link, target)
-  fs.link(target, link)
-  return
-end
-
-function lib.create(link, target)
+function lib.create(target, link)
   fs.link(target, link)
   local file = io.open("/etc/ld.lst", "a")
   file:write(string.format("%s > %s\n", link, target))
