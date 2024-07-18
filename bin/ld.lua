@@ -16,26 +16,15 @@ if ops.r then     --Remove a symlink
   else
     io.stderr:write(string.format("link not found: %s", shell.resolve(args[1])))
   end
-elseif ops.t then --Create a temporary symlink
-  if args[1] == nil or args[2] == nil then
-    shell.execute("man link")
-  elseif fs.exists(shell.resolve(args[1])) then
-    io.stderr:write(string.format("file already exists: %s", shell.resolve(args[1])))
-  elseif fs.exists(shell.resolve(args[2])) then
-    ld.createTemp(shell.resolve(args[1]), shell.resolve(args[2]))
-    print(string.format("created temporary link: %s > %s", shell.resolve(args[1]), shell.resolve(args[2])))
-  else
-    io.stderr:write(string.format("can't link to file: %s", shell.resolve(args[2])))
-  end
 else              --Create a permanant symlink
   if args[1] == nil or args[2] == nil then
     shell.execute("man link")
-  elseif fs.exists(shell.resolve(args[1])) then
-    io.stderr:write(string.format("file already exists: %s", shell.resolve(args[1])))
   elseif fs.exists(shell.resolve(args[2])) then
+    io.stderr:write(string.format("file already exists: %s", shell.resolve(args[1])))
+  elseif fs.exists(shell.resolve(args[1])) then
     ld.create(shell.resolve(args[1]), shell.resolve(args[2]))
     print(string.format("added link to list: %s > %s", shell.resolve(args[1]), shell.resolve(args[2])))
   else
-    io.stderr:write(string.format("can't link to file: %s", shell.resolve(args[2])))
+    io.stderr:write(string.format("can't link to file: %s", shell.resolve(args[1])))
   end
 end
