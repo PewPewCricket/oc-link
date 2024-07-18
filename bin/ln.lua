@@ -25,7 +25,9 @@ if fs.exists(linkpath) then
   io.stderr:write(string.format("file already exists: %s", linkpath))
 elseif fs.exists(target) then
   link.create(target, linkpath)
-  print(string.format("added link to list: %s > %s", linkpath, target))
+  if not ops.q then
+    print(string.format("added link to list: %s > %s", linkpath, target))
+  end
 else
   io.stderr:write(string.format("can't link to file: %s", target))
 end
