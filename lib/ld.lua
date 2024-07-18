@@ -1,13 +1,13 @@
 local fs = require("filesystem")
-local ftable = require("tools/ftable")
+local ftable = require("tools/futils")
 local lib = {}
 
 function lib.remove(link)
   fs.remove(link)
-  local fileData = ftable.fileToTable("/etc/link.d/links.list")
+  local fileData = ftable.fileToTable("/etc/ld.lst")
   local removeIndex = ftable.findData(link, fileData)
   table.remove(fileData, removeIndex)
-  file = io.open("/etc/link.d/links.list", "w")
+  file = io.open("/etc/ld.lst", "w")
   for i, v in ipairs(fileData) do
     file:write(v .. "\n")
   end
@@ -21,7 +21,7 @@ end
 
 function lib.create(link, target)
   fs.link(target, link)
-  local file = io.open("/etc/link.d/links.list", "a")
+  local file = io.open("/etc/ld.lst", "a")
   file:write(string.format("%s > %s\n", link, target))
   file:close()
   return
