@@ -11,5 +11,6 @@ shell.execute("wget -q https://raw.githubusercontent.com/PewPewCricket/oc-link/m
 print("downloaded /bin/ln.lua")
 shell.execute("wget -q https://raw.githubusercontent.com/PewPewCricket/oc-link/main/usr/man/ln /usr/man/ln")
 print("downloaded /usr/man/ln")
+shell.execute("touch /etc/ln.lst")
 shell.execute("rc link enable")
 print("link service enabled")
