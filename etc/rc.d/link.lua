@@ -2,7 +2,7 @@ local fs = require("filesystem")
 local futils = require("tools/futils")
 
 function start()
-  local fileData = futils.fileToTable("/etc/ld.lst")
+  local fileData = futils.fileToTable("/etc/link.lst")
   local seperator = " > "
   local index = 0
   for j, v in pairs(fileData) do
