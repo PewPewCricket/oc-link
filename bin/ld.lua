@@ -23,7 +23,7 @@ else              --Create a permanant symlink
     io.stderr:write(string.format("file already exists: %s", shell.resolve(args[1])))
   elseif fs.exists(shell.resolve(args[1])) then
     ld.create(shell.resolve(args[1]), shell.resolve(args[2]))
-    print(string.format("added link to list: %s > %s", shell.resolve(args[1]), shell.resolve(args[2])))
+    print(string.format("added link to list: %s > %s", shell.resolve(args[2]), shell.resolve(args[1])))
   else
     io.stderr:write(string.format("can't link to file: %s", shell.resolve(args[1])))
   end
