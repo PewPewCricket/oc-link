@@ -6,7 +6,7 @@ local args, ops = shell.parse(...)
 
 if ops.r then     --Remove a symlink
   if args[1] == nil then
-    shell.execute("man link")
+    shell.execute("man ld")
   elseif futils.findData(shell.resolve(args[1]), futils.fileToTable("/etc/ld.lst")) ~= nil then
     ld.remove(shell.resolve(args[1]))
     print(string.format("removed link from list: %s", shell.resolve(args[1])))
@@ -18,7 +18,7 @@ if ops.r then     --Remove a symlink
   end
 else              --Create a permanant symlink
   if args[1] == nil or args[2] == nil then
-    shell.execute("man link")
+    shell.execute("man ld")
   elseif fs.exists(shell.resolve(args[2])) then
     io.stderr:write(string.format("file already exists: %s", shell.resolve(args[1])))
   elseif fs.exists(shell.resolve(args[1])) then
