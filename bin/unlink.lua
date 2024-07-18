@@ -16,10 +16,14 @@ local target = shell.resolve(target_name)
 -- Remove a link from the list
 if futils.findData(target, futils.fileToTable("/etc/link.lst")) ~= nil then
   link.remove(target)
-  print(string.format("removed link from list: %s", target))
+  if not ops.q then
+    print(string.format("removed link from list: %s", target))
+  end
 elseif fs.exists(target) and fs.isLink(target) then
   fs.remove(target)
-  print(string.format("removed temporary link: %s", target))
+  if not ops.q then
+    print(string.format("removed link: %s", target))
+  end
 else
-  io.stderr:write(string.format("link not found: %s", target))
+  io.stderr:write(string.format("target not found: %s", target))
 end
