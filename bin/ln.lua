@@ -20,25 +20,12 @@ else
   linkpath = fs.concat(shell.getWorkingDirectory(), fs.name(target))
 end
 
--- remove a symlink
-if ops.r then
-  if futils.findData(target, futils.fileToTable("/etc/link.lst")) ~= nil then
-    link.remove(target)
-    print(string.format("removed link from list: %s", target))
-  elseif fs.exists(target) and fs.isLink(target) then
-    fs.remove(target)
-    print(string.format("removed temporary link: %s", target))
-  else
-    io.stderr:write(string.format("link not found: %s", target))
-  end
--- create a symlink
+-- add a symlink to the list
+if fs.exists(linkpath) then
+  io.stderr:write(string.format("file already exists: %s", linkpath))
+elseif fs.exists(target) then
+  link.create(target, linkpath)
+  print(string.format("added link to list: %s > %s", linkpath, target))
 else
-  if fs.exists(linkpath) then
-    io.stderr:write(string.format("file already exists: %s", linkpath))
-  elseif fs.exists(target) then
-    link.create(target, linkpath)
-    print(string.format("added link to list: %s > %s", linkpath, target))
-  else
-    io.stderr:write(string.format("can't link to file: %s", target))
-  end
+  io.stderr:write(string.format("can't link to file: %s", target))
 end
