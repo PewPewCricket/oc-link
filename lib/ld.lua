@@ -1,11 +1,11 @@
 local fs = require("filesystem")
-local ftable = require("tools/futils")
+local futils = require("tools/futils")
 local lib = {}
 
 function lib.remove(link)
   fs.remove(link)
-  local fileData = ftable.fileToTable("/etc/ld.lst")
-  local removeIndex = ftable.findData(link, fileData)
+  local fileData = futils.fileToTable("/etc/ld.lst")
+  local removeIndex = futils.findData(link, fileData)
   table.remove(fileData, removeIndex)
   file = io.open("/etc/ld.lst", "w")
   for i, v in ipairs(fileData) do
