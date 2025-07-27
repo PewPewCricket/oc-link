@@ -1,0 +1,13 @@
+NAME
+  link - manage symlinks that persist across shutdowns
+  
+SYNOPSIS
+  link LINK TARGET      create a symlink
+  link -t LINK TARGET   create a temporary symlink
+  link -r LINK          remove a symlink
+  
+OPTIONS
+  -v : print verbose messages
+
+DESCRIPTION
+  'link' provides a tool for creating and managing persistant symlinks though an rc script and library
