@@ -12,4 +12,6 @@ get("etc/rc.d/link.lua")
 get("bin/ln.lua")
 get("usr/man/ln")
 
+shell.execute("rc link enable")
+
 print("installation complete.")
