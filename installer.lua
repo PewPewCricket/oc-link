@@ -1,4 +1,5 @@
 local shell =require("shell")
+local fs = require("filesystem")
 
 local args = shell.parse(...)
 local targetDir = args[1] or "/"
