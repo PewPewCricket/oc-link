@@ -1,0 +1,8 @@
+NAME
+  unlink - delete a symlink
+  
+SYNOPSIS
+  unlink LINK      delete a symlink
+
+DESCRIPTION
+  'unlink' provides a tool for deleting persistant symlinks though an rc script and library.

@@ -1,13 +1,10 @@
 NAME
-  link - manage symlinks that persist across shutdowns
+  ln - create a symlink
   
 SYNOPSIS
-  link LINK TARGET      create a symlink
-  link -t LINK TARGET   create a temporary symlink
-  link -r LINK          remove a symlink
-  
-OPTIONS
-  -v : print verbose messages
+  ln TARGET           create a symlink
+  ln LINK TARGET      create a symlink with symlink at LINK
+  ln -t LINK TARGET   create a temporary symlink
 
 DESCRIPTION
-  'link' provides a tool for creating and managing persistant symlinks though an rc script and library
+  'ln' provides a tool for creating persistant symlinks though an rc script and library.
