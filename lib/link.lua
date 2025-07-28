@@ -62,7 +62,7 @@ link.remove = function(target)
     fs.remove(target)
   end
   local lines, err = fileToTable(listFile)
-  if not data 
+  if not data then
     return nil, err
   else
     io.open(listFile, "w"):close()

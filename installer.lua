@@ -9,6 +9,7 @@ local function get(file)
 end
 
 fs.remove("/bin//ln.lua")
+fs.remove("/bin//unlink.lua")
 
 get("lib/link.lua")
 get("etc/rc.d/link.lua")
