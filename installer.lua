@@ -5,7 +5,7 @@ local args = shell.parse(...)
 local targetDir = args[1] or "/"
 
 local function get(file)
-  shell.execute("wget https://raw.githubusercontent.com/PewPewCricket/oc-link/refs/heads/main/" .. file .. " " .. targetDir .. file)
+  shell.execute("wget https://raw.githubusercontent.com/PewPewCricket/oc-link/refs/heads/master/" .. file .. " " .. targetDir .. file)
 end
 
 fs.remove("/bin//ln.lua")
