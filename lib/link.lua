@@ -80,7 +80,7 @@ end
 -- Restore all links in list
 link.restore = function()
   local lines, err = fileToTable(listFile)
-  if not data 
+  if not data then
     return nil, err
   else
     for line in lines do
